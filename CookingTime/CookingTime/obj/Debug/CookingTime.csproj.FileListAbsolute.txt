@@ -73,3 +73,10 @@ C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Microsoft.A
 C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\AutoMapper.dll
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Glimpse.Ado.dll
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Glimpse.AspNet.dll
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Glimpse.Core.dll
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Glimpse.EF6.dll
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\Glimpse.Mvc5.dll
+C:\Users\PC\Documents\GitHub\CookingTime\CookingTime\CookingTime\bin\AutoMapper.xml

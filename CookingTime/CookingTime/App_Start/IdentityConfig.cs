@@ -10,7 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using CookingTime.Models;
+using CookingTime.Models.AccountViewModels;
+using CookingTime.Models.IdentityModels;
+using CookingTime.Models.ManageViewModels;
 
 namespace CookingTime
 {

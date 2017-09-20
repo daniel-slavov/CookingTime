@@ -5,7 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using CookingTime.Models;
+using CookingTime.Models.AccountViewModels;
+using CookingTime.Models.IdentityModels;
+using CookingTime.Models.ManageViewModels;
 
 namespace CookingTime
 {
