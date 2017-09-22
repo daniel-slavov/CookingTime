@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(CookingTime.Startup))]
-namespace CookingTime
+[assembly: OwinStartupAttribute(typeof(CookingTime.Web.Startup))]
+namespace CookingTime.Web
 {
     public partial class Startup
     {

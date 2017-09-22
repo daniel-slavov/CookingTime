@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime", "CookingTime\CookingTime.csproj", "{A6D476FD-2B21-455B-B907-044DF415A0BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Web", "CookingTime.Web\CookingTime.Web.csproj", "{A6D476FD-2B21-455B-B907-044DF415A0BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Tests", "CookingTime.Tests\CookingTime.Tests.csproj", "{EB17CA51-B343-4E83-97A7-E1B2FB3A180D}"
 EndProject

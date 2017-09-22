@@ -10,7 +10,7 @@ using CookingTime.Models.IdentityModels;
 using CookingTime.Models.ManageViewModels;
 using CookingTime.Data;
 
-namespace CookingTime
+namespace CookingTime.Web
 {
     public partial class Startup
     {

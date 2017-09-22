@@ -99,9 +99,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CookingTime\CookingTime.csproj">
+    <ProjectReference Include="..\CookingTime.Controllers\CookingTime.Controllers.csproj">
+      <Project>{ed941eb0-6163-4091-920b-152eef023600}</Project>
+      <Name>CookingTime.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Data\CookingTime.Data.csproj">
+      <Project>{336d4313-e0bb-4e01-8f90-57bd1c833f97}</Project>
+      <Name>CookingTime.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Factories\CookingTime.Factories.csproj">
+      <Project>{16f668a9-263b-4378-83c2-610a4f5a4834}</Project>
+      <Name>CookingTime.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Models\CookingTime.Models.csproj">
+      <Project>{1dbd36c9-1d01-4112-a5c0-5bf9f5aa26b8}</Project>
+      <Name>CookingTime.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime\CookingTime.Web.csproj">
       <Project>{A6D476FD-2B21-455B-B907-044DF415A0BD}</Project>
-      <Name>CookingTime</Name>
+      <Name>CookingTime.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
