@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Data", "Cooking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Factories", "CookingTime.Factories\CookingTime.Factories.csproj", "{16F668A9-263B-4378-83C2-610A4F5A4834}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Controllers", "CookingTime.Controllers\CookingTime.Controllers.csproj", "{ED941EB0-6163-4091-920B-152EEF023600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Models", "CookingTime.Models\CookingTime.Models.csproj", "{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,7 +26,6 @@ Global
 		{A6D476FD-2B21-455B-B907-044DF415A0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6D476FD-2B21-455B-B907-044DF415A0BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB17CA51-B343-4E83-97A7-E1B2FB3A180D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB17CA51-B343-4E83-97A7-E1B2FB3A180D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB17CA51-B343-4E83-97A7-E1B2FB3A180D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB17CA51-B343-4E83-97A7-E1B2FB3A180D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{336D4313-E0BB-4E01-8F90-57BD1C833F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,6 +36,14 @@ Global
 		{16F668A9-263B-4378-83C2-610A4F5A4834}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16F668A9-263B-4378-83C2-610A4F5A4834}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16F668A9-263B-4378-83C2-610A4F5A4834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED941EB0-6163-4091-920B-152EEF023600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED941EB0-6163-4091-920B-152EEF023600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED941EB0-6163-4091-920B-152EEF023600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED941EB0-6163-4091-920B-152EEF023600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
