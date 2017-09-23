@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Controllers", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Models", "CookingTime.Models\CookingTime.Models.csproj", "{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Authentication", "CookingTime.Authentication\CookingTime.Authentication.csproj", "{B67B4B56-EB73-4DBF-8141-9F30DBB7312D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingTime.Services", "CookingTime.Services\CookingTime.Services.csproj", "{52CFD83D-18C3-4E79-92DE-B1E4CC0ED5CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DBD36C9-1D01-4112-A5C0-5BF9F5AA26B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B67B4B56-EB73-4DBF-8141-9F30DBB7312D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B67B4B56-EB73-4DBF-8141-9F30DBB7312D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B67B4B56-EB73-4DBF-8141-9F30DBB7312D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B67B4B56-EB73-4DBF-8141-9F30DBB7312D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52CFD83D-18C3-4E79-92DE-B1E4CC0ED5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52CFD83D-18C3-4E79-92DE-B1E4CC0ED5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52CFD83D-18C3-4E79-92DE-B1E4CC0ED5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52CFD83D-18C3-4E79-92DE-B1E4CC0ED5CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,9 +5,9 @@ namespace CookingTime.Data.Contracts
     public interface IRepository<T>
         where T : class
     {
-        T GetById(object id);
+        IQueryable<T> All { get; }
 
-        IQueryable<T> Entities { get; }
+        T GetById(object id);
 
         void Add(T entity);
 

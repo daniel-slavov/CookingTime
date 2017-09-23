@@ -101,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountController.cs" />
-    <Compile Include="Config\IdentityConfig.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="ManageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +110,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CookingTime.Authentication\CookingTime.Authentication.csproj">
+      <Project>{b67b4b56-eb73-4dbf-8141-9f30dbb7312d}</Project>
+      <Name>CookingTime.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CookingTime.Data\CookingTime.Data.csproj">
       <Project>{336d4313-e0bb-4e01-8f90-57bd1c833f97}</Project>
       <Name>CookingTime.Data</Name>

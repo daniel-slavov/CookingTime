@@ -10,24 +10,30 @@ namespace CookingTime.Data
     public class Repository<T> : IRepository<T>
         where T : class
     {
+        private readonly DbContext Context;
+        private readonly IDbSet<T> Set;
+
         public Repository(DbContext dbContext)
         {
             this.Context = dbContext ?? throw new ArgumentNullException("Context cannot be null");
             this.Set = this.Context.Set<T>();
         }
 
-        protected IDbSet<T> Set { get; set; }
+        //protected IDbSet<T> Set { get; set; }
 
-        protected DbContext Context { get; set; }
+        //protected DbContext Context { get; set; }
+
+        public IQueryable<T> All
+        {
+            get
+            {
+                return this.Set;
+            }
+        }
 
         public T GetById(object id)
         {
             return this.Set.Find(id);
-        }
-
-        public IQueryable<T> Entities
-        {
-            get { return this.Set; }
         }
 
         public void Add(T entity)

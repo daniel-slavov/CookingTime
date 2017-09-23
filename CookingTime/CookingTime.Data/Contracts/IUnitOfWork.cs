@@ -1,9 +1,9 @@
-﻿namespace CookingTime.Data.Contracts
+﻿using System.Threading.Tasks;
+
+namespace CookingTime.Data.Contracts
 {
     public interface IUnitOfWork
     {
-        void Dispose();
-
         void Commit();
     }
 }

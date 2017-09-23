@@ -9,30 +9,31 @@ using Microsoft.Owin.Security;
 using CookingTime.Models.AccountViewModels;
 using CookingTime.Models.IdentityModels;
 using CookingTime.Models.ManageViewModels;
+using CookingTime.Authentication.Config;
 
 namespace CookingTime.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private SignInService _signInManager;
+        private UserService _userManager;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(UserService userManager, SignInService signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
 
-        public ApplicationSignInManager SignInManager
+        public SignInService SignInManager
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                return _signInManager ?? HttpContext.GetOwinContext().Get<SignInService>();
             }
             private set 
             { 
@@ -40,11 +41,11 @@ namespace CookingTime.Controllers
             }
         }
 
-        public ApplicationUserManager UserManager
+        public UserService UserManager
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<UserService>();
             }
             private set
             {
@@ -59,7 +60,6 @@ namespace CookingTime.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
 
@@ -182,10 +182,7 @@ namespace CookingTime.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
-            SetTwoFactorSuccess,
             SetPasswordSuccess,
-            RemoveLoginSuccess,
-            RemovePhoneSuccess,
             Error
         }
 
