@@ -1,13 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace CookingTime.Data.Contracts
 {
     public interface IRepository<T>
         where T : class
     {
-        IQueryable<T> All { get; }
-
         T GetById(object id);
+
+        IQueryable<T> All { get; }
 
         void Add(T entity);
 

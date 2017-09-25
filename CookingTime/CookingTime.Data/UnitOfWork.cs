@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Threading.Tasks;
 using CookingTime.Data.Contracts;
+using System.Threading.Tasks;
 
 namespace CookingTime.Data
 {
@@ -11,12 +10,17 @@ namespace CookingTime.Data
 
         public UnitOfWork(ICookingTimeDbContext dbContext)
         {
-            this.dbContext = dbContext ?? throw new ArgumentNullException("DbContext cannot be null.");
+            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public void Commit()
         {
             this.dbContext.SaveChanges();
+        }
+
+        public async Task CommitAsync()
+        {
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }
