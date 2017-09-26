@@ -8,10 +8,10 @@ namespace CookingTime.Models
     {
         public Ingredient()
         {
-
+            this.Recipes = new HashSet<Recipe>();
         }
 
-        public Ingredient(Guid id, string name)
+        public Ingredient(Guid id, string name) : this()
         {
             this.ID = id;
             this.Name = name;

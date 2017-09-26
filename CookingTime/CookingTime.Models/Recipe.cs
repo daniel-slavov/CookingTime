@@ -11,13 +11,12 @@ namespace CookingTime.Models
             this.Ingredients = new HashSet<Ingredient>();
         }
 
-        public Recipe(Guid id, string title, string description, ICollection<Ingredient> ingredients, User owner) : this()
+        public Recipe(Guid id, string title, string description, User owner) : this()
         {
             this.ID = id;
             this.Title = title;
             this.Description = description;
             this.Owner = owner;
-            this.Ingredients = ingredients;
         }
 
         [Key]
