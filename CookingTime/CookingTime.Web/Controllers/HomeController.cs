@@ -12,18 +12,8 @@ namespace CookingTime.Web.Controllers
 
         public HomeController(IAuthenticationProvider provider, IViewModelFactory factory)
         {
-            if (provider == null)
-            {
-                throw new ArgumentNullException(nameof(provider));
-            }
-
-            if (factory == null)
-            {
-                throw new ArgumentNullException(nameof(factory));
-            }
-
-            this.provider = provider;
-            this.factory = factory;
+            this.provider = provider ?? throw new ArgumentNullException(nameof(provider));
+            this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
         public ActionResult Index()

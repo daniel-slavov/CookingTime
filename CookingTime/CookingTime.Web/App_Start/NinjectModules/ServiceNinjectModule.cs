@@ -10,6 +10,8 @@ namespace CookingTime.Web.App_Start.NinjectModules
         public override void Load()
         {
             this.Bind<IUserService>().To<UserService>().InRequestScope();
+            this.Bind<IRecipeService>().To<RecipeService>().InSingletonScope();
+            this.Bind<IIngredientService>().To<IngredientService>().InSingletonScope();
         }
     }
 }

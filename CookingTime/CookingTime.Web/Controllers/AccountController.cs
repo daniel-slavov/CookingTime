@@ -19,18 +19,8 @@ namespace CookingTime.Web.Controllers
 
         public AccountController(IAuthenticationProvider provider, IUserFactory userFactory)
         {
-            if (provider == null)
-            {
-                throw new ArgumentNullException(nameof(provider));
-            }
-
-            if (userFactory == null)
-            {
-                throw new ArgumentNullException(nameof(userFactory));
-            }
-
-            this.provider = provider;
-            this.userFactory = userFactory;
+            this.provider = provider ?? throw new ArgumentNullException(nameof(provider));
+            this.userFactory = userFactory ?? throw new ArgumentNullException(nameof(userFactory));
         }
 
         // GET: /Account/Login

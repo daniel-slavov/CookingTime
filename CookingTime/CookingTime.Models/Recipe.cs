@@ -11,11 +11,14 @@ namespace CookingTime.Models
             this.Ingredients = new HashSet<Ingredient>();
         }
 
-        public Recipe(Guid id, string title, string description, User owner) : this()
+        public Recipe(Guid id, string title, string description, DateTime createdOn, bool isDeleted, ICollection<Ingredient> ingredients, User owner) : this()
         {
             this.ID = id;
             this.Title = title;
             this.Description = description;
+            this.CreatedOn = createdOn;
+            this.IsDeleted = IsDeleted;
+            this.Ingredients = ingredients;
             this.Owner = owner;
         }
 
@@ -27,6 +30,10 @@ namespace CookingTime.Models
 
         [Required]
         public string Description { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public ICollection<Ingredient> Ingredients { get; set; }
 

@@ -13,18 +13,8 @@ namespace CookingTime.Web.Controllers
 
         public NavigationController(IAuthenticationProvider authenticationProvider, IViewModelFactory viewModelFactory)
         {
-            if (authenticationProvider == null)
-            {
-                throw new ArgumentNullException(nameof(authenticationProvider));
-            }
-
-            if (viewModelFactory == null)
-            {
-                throw new ArgumentNullException(nameof(viewModelFactory));
-            }
-
-            this.viewModelFactory = viewModelFactory;
-            this.authenticationProvider = authenticationProvider;
+            this.viewModelFactory = viewModelFactory ?? throw new ArgumentNullException(nameof(viewModelFactory));
+            this.authenticationProvider = authenticationProvider ?? throw new ArgumentNullException(nameof(authenticationProvider));
         }
 
         public ActionResult Index()
