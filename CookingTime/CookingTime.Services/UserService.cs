@@ -19,24 +19,23 @@ namespace CookingTime.Services
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public User GetUserById(string id)
+        public User GetById(string id)
         {
             return this.userRepository.GetById(id);
         }
 
-        public User GetUserByUsername(string username)
+        public User GetByUsername(string username)
         {
             var user = this.userRepository
                 .All
                 .FirstOrDefault(u => u.UserName.Equals(username));
 
             return user;
-        }        
+        }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<User> GetAll()
         {
-            return this.userRepository.All
-                .ToList();
+            return this.userRepository.All;
         }
     }
 }

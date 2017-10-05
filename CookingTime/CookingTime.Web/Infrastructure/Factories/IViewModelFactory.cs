@@ -1,6 +1,7 @@
 ﻿using CookingTime.Web.Models.Home;
 using CookingTime.Web.Models.Navigation;
 using CookingTime.Web.Models.Recipe;
+using System;
 
 namespace CookingTime.Web.Infrastructure.Factories
 {
@@ -12,6 +13,6 @@ namespace CookingTime.Web.Infrastructure.Factories
 
         RecipeViewModel CreateRecipeViewModel();
 
-        RecipeViewModel CreateRecipeViewModel(string title, string description);
+        RecipeViewModel CreateRecipeViewModel(Guid id, string title, string description, string imageUrl);
     }
 }

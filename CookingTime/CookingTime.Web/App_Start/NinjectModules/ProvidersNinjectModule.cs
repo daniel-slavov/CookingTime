@@ -11,6 +11,7 @@ namespace CookingTime.Web.App_Start.NinjectModules
             this.Bind<IDateTimeProvider>().To<DateTimeProvider>().InSingletonScope();
             this.Bind<IHttpContextProvider>().To<HttpContextProvider>().InSingletonScope();
             this.Bind<ICachingProvider>().To<CachingProvider>().InSingletonScope();
+            this.Bind<IGuidProvider>().To<GuidProvider>().InSingletonScope();
         }
     }
 }

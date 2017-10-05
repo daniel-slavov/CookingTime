@@ -8,7 +8,7 @@ namespace CookingTime.Models
     {
         public User()
         {
-            
+            this.Recipes = new HashSet<Recipe>();
         }
 
         public User(string username, string email)
@@ -18,9 +18,9 @@ namespace CookingTime.Models
             this.Email = email;
         }
 
-        public DateTime CreatedOn { get; set; }
+        //public DateTime CreatedOn { get; set; }
 
-        public bool IsDeleted { get; set; }
+        //public bool IsDeleted { get; set; }
 
         public virtual ICollection<Recipe> Recipes { get; set; }
     }

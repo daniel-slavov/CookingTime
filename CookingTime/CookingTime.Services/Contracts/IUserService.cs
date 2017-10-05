@@ -5,10 +5,10 @@ namespace CookingTime.Services.Contracts
 {
     public interface IUserService
     {
-        User GetUserById(string id);
+        User GetById(string id);
 
-        User GetUserByUsername(string username);
+        User GetByUsername(string username);
 
-        IEnumerable<User> GetUsers();
+        IEnumerable<User> GetAll();
     }
 }

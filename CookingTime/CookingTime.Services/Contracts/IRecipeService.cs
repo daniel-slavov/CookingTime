@@ -10,10 +10,14 @@ namespace CookingTime.Services.Contracts
 
         IEnumerable<Recipe> GetAll();
 
-        Recipe Create(string title, string description, ICollection<string> inputIngredients, string userId);
+        IEnumerable<Recipe> GetAllWithDeleted();
 
-        void Update(Recipe recipe);
+        Guid Create(string title, string description, string imageUrl, string userId);
 
-        void Delete(Recipe recipe);
+        void Update(Guid id, string title, string description, string imageUrl);
+
+        void Delete(Guid id);
+
+        void Recover(Guid id);
     }
 }

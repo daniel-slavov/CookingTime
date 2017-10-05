@@ -79,9 +79,11 @@
   <ItemGroup>
     <Compile Include="CachingProvider.cs" />
     <Compile Include="Contracts\ICachingProvider.cs" />
+    <Compile Include="Contracts\IGuidProvider.cs" />
     <Compile Include="Contracts\IHttpContextProvider.cs" />
     <Compile Include="DateTimeProvider.cs" />
     <Compile Include="Contracts\IDateTimeProvider.cs" />
+    <Compile Include="GuidProvider.cs" />
     <Compile Include="HttpContextProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

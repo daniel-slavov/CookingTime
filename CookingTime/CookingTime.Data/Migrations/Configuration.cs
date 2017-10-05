@@ -23,15 +23,15 @@ namespace CookingTime.Data.Migrations
                 context.Roles.Add(new IdentityRole(Constants.AdministratorRoleName));
             }
 
-            List<Ingredient> ingredients = new List<Ingredient>() {
-                new Ingredient(Guid.NewGuid(), "Eggs"),
-                new Ingredient(Guid.NewGuid(), "Milk"),
-                new Ingredient(Guid.NewGuid(), "Meat"),
-                new Ingredient(Guid.NewGuid(), "Tomato"),
-                new Ingredient(Guid.NewGuid(), "Rice"),
-            };
+            //List<Ingredient> ingredients = new List<Ingredient>() {
+            //    new Ingredient(Guid.NewGuid(), "Eggs"),
+            //    new Ingredient(Guid.NewGuid(), "Milk"),
+            //    new Ingredient(Guid.NewGuid(), "Meat"),
+            //    new Ingredient(Guid.NewGuid(), "Tomato"),
+            //    new Ingredient(Guid.NewGuid(), "Rice"),
+            //};
 
-            context.Ingredients.AddRange(ingredients);
+            //context.Ingredients.AddRange(ingredients);
         }
     }
 }

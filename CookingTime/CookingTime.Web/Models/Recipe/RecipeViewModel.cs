@@ -1,4 +1,5 @@
 ﻿using CookingTime.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,14 +9,19 @@ namespace CookingTime.Web.Models.Recipe
     {
         public RecipeViewModel()
         {
-            this.Ingredients = new HashSet<string>();
+            //this.Ingredients = new HashSet<string>();
         }
 
-        public RecipeViewModel(string title, string description) : this()
+        public RecipeViewModel(Guid id, string title, string description, string imageUrl) : this()
         {
+            this.ID = id;
             this.Title = title;
             this.Description = description;
+            this.ImageUrl = imageUrl;
         }
+
+        public Guid ID { get; set; }
+
         [Required]
         [Display(Name = "Title")]
         public string Title { get; set; }
@@ -24,7 +30,11 @@ namespace CookingTime.Web.Models.Recipe
         [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [Display(Name = "Ingredients")]
-        public ICollection<string> Ingredients { get; set; }
+        [Required]
+        [Display(Name = "Image Url")]
+        public string ImageUrl { get; set; }
+
+        //[Display(Name = "Ingredients")]
+        //public ICollection<string> Ingredients { get; set; }
     }
 }

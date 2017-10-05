@@ -5,6 +5,6 @@ namespace CookingTime.Factories
 {
     public interface IIngredientFactory
     {
-        Ingredient CreateIngredient(Guid id, string name);
+        //Ingredient CreateIngredient(Guid id, string name);
     }
 }

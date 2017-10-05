@@ -15,16 +15,16 @@ namespace CookingTime.Services
         private readonly IUnitOfWork UnitOfWork;
         private readonly IRecipeFactory RecipeFactory;
         private readonly IDateTimeProvider DateTimeProvider;
+        private readonly IGuidProvider GuidProvider;
         private readonly IUserService UserService;
-        private readonly IIngredientService IngredientService;
 
         public RecipeService(
             IRepository<Recipe> recipeRepository,
             IUnitOfWork unitOfWork,
             IRecipeFactory recipeFactory,
             IDateTimeProvider dateTimeProvider,
-            IUserService userService,
-            IIngredientService ingredientService
+            IGuidProvider guidProvider,
+            IUserService userService
             )
         {
             this.RecipeRepository = recipeRepository ?? throw new ArgumentNullException(nameof(recipeRepository));
@@ -32,39 +32,27 @@ namespace CookingTime.Services
             this.RecipeFactory = recipeFactory ?? throw new ArgumentNullException(nameof(recipeFactory));
             this.DateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
             this.UserService = userService ?? throw new ArgumentNullException(nameof(userService));
-            this.IngredientService = ingredientService ?? throw new ArgumentNullException(nameof(ingredientService));
-        }
-
-        public Recipe Create(string title, string description, ICollection<string> inputIngredients, string userId)
-        {
-            User user = this.UserService.GetUserById(userId);
-            DateTime currentTime = this.DateTimeProvider.GetCurrentTime();
-            ICollection<Ingredient> ingredients = this.IngredientService.GetAllByName(inputIngredients);
-
-            Recipe recipe = this.RecipeFactory.CreateRecipe(Guid.NewGuid(), title, description, currentTime, false, ingredients, user);
-
-            this.RecipeRepository.Add(recipe);
-            this.UnitOfWork.Commit();
-
-            return recipe;
-        }
-
-        public Recipe Create(Recipe recipe)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Recipe recipe)
-        {
-            throw new NotImplementedException();
+            this.GuidProvider = guidProvider ?? throw new ArgumentNullException(nameof(guidProvider));
         }
 
         public Recipe GetById(Guid id)
         {
-            throw new NotImplementedException();
+            Recipe recipe = this.RecipeRepository.GetById(id);
+
+            return recipe;
         }
 
         public IEnumerable<Recipe> GetAll()
+        {
+            IEnumerable<Recipe> recipes = this.RecipeRepository.All
+                .Where(x => !x.IsDeleted)
+                .OrderByDescending(x => x.CreatedOn)
+                .ToList();
+
+            return recipes;
+        }
+
+        public IEnumerable<Recipe> GetAllWithDeleted()
         {
             IEnumerable<Recipe> recipes = this.RecipeRepository.All
                 .OrderByDescending(x => x.CreatedOn)
@@ -73,9 +61,46 @@ namespace CookingTime.Services
             return recipes;
         }
 
-        public void Update(Recipe recipe)
+        public Guid Create(string title, string description, string imageUrl, string userId)
         {
-            throw new NotImplementedException();
+            User user = this.UserService.GetById(userId);
+            DateTime currentTime = this.DateTimeProvider.GetCurrentTime();
+            Guid guid = this.GuidProvider.CreateGuid();
+
+            Recipe recipe = this.RecipeFactory.CreateRecipe(guid, title, description, imageUrl, currentTime, false, user);
+
+            this.RecipeRepository.Add(recipe);
+            this.UnitOfWork.Commit();
+
+            return guid;
+        }
+
+        public void Update(Guid id, string title, string description, string imageUrl)
+        {
+            Recipe recipe = this.RecipeRepository.GetById(id);
+            recipe.Title = title;
+            recipe.Description = description;
+
+            this.RecipeRepository.Update(recipe);
+            this.UnitOfWork.Commit();
+        }
+
+        public void Delete(Guid id)
+        {
+            Recipe recipe = this.RecipeRepository.GetById(id);
+            recipe.IsDeleted = true;
+
+            this.RecipeRepository.Update(recipe);
+            this.UnitOfWork.Commit();
+        }
+
+        public void Recover(Guid id)
+        {
+            Recipe recipe = this.RecipeRepository.GetById(id);
+            recipe.IsDeleted = false;
+
+            this.RecipeRepository.Update(recipe);
+            this.UnitOfWork.Commit();
         }
     }
 }

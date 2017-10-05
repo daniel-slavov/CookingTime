@@ -3,6 +3,10 @@
 <ul class="nav navbar-nav">
     <li>@Html.ActionLink("CookingTime", "Index", "Home")</li>
     <li>@Html.ActionLink("Recipes", "All", "Recipe")</li>
+    @if (Model.IsAuthenticated)
+    {
+        <li>@Html.ActionLink("Create", "Create", "Recipe")</li>
+    }
     @if (Model.IsAdmin)
     {
         <li>@Html.ActionLink("Administration", "Index", "Administration")</li>

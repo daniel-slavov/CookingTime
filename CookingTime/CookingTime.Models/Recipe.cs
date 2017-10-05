@@ -8,17 +8,18 @@ namespace CookingTime.Models
     {
         public Recipe()
         {
-            this.Ingredients = new HashSet<Ingredient>();
+            //this.Ingredients = new HashSet<Ingredient>();
         }
 
-        public Recipe(Guid id, string title, string description, DateTime createdOn, bool isDeleted, ICollection<Ingredient> ingredients, User owner) : this()
+        public Recipe(Guid id, string title, string description, string imageUrl, DateTime createdOn, bool isDeleted, User owner) : this()
         {
             this.ID = id;
             this.Title = title;
             this.Description = description;
+            this.ImageUrl = imageUrl;
             this.CreatedOn = createdOn;
             this.IsDeleted = IsDeleted;
-            this.Ingredients = ingredients;
+            //this.Ingredients = ingredients;
             this.Owner = owner;
         }
 
@@ -31,13 +32,15 @@ namespace CookingTime.Models
         [Required]
         public string Description { get; set; }
 
+        public string ImageUrl { get; private set; }
+
         public DateTime CreatedOn { get; set; }
 
         public bool IsDeleted { get; set; }
 
-        public ICollection<Ingredient> Ingredients { get; set; }
+        //public ICollection<Ingredient> Ingredients { get; set; }
 
         [Required]
-        public virtual User Owner { get; set; }
+        public User Owner { get; set; }
     }
 }

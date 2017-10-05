@@ -9,11 +9,11 @@ namespace CookingTime.Services.Contracts
 {
     public interface IIngredientService
     {
-        Ingredient GetByName(string name);
+        //Ingredient GetByName(string name);
 
-        ICollection<Ingredient> GetAllByName(ICollection<string> names);
+        //ICollection<Ingredient> GetAllByName(ICollection<string> names);
 
-        Ingredient Create(string name);
+        //Ingredient Create(string name);
 
     }
 }
