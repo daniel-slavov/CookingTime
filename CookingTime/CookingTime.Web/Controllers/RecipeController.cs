@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace CookingTime.Web.Controllers
 {
@@ -37,12 +38,14 @@ namespace CookingTime.Web.Controllers
         }
 
         // GET: /Recipes/All
-        public ActionResult All()
+        public ActionResult All(int? page)
         {
             IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
                 .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
 
-            return this.View(recipes);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return this.View(recipes.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Recipes/GetByID/

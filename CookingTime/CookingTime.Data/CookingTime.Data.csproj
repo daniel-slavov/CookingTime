@@ -83,10 +83,6 @@
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CookingTime.Common\CookingTime.Common.csproj">
-      <Project>{90DD5B30-CFFF-45AC-9DC8-C969FD735AB6}</Project>
-      <Name>CookingTime.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CookingTime.Models\CookingTime.Models.csproj">
       <Project>{42C607C4-8FB1-490C-AAD4-5AC9921F91FC}</Project>
       <Name>CookingTime.Models</Name>

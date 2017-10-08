@@ -19,9 +19,7 @@ namespace CookingTime.Web.App_Start.NinjectModules
         {
             var cachingInterceptor = this.Kernel.Get<CachingInterceptor>();
 
-            //Kernel.AddMethodInterceptor(typeof(CookingTimeService).GetMethod("GetAllSortedByDate"), cachingInterceptor.Intercept);
-            //Kernel.AddMethodInterceptor(typeof(NutritionService).GetMethod("GetUserNutritionsSortedByDate"), cachingInterceptor.Intercept);
-            //Kernel.AddMethodInterceptor(typeof(MeasurementService).GetMethod("GetUserMeasurementsSortedByDate"), cachingInterceptor.Intercept);
+            Kernel.AddMethodInterceptor(typeof(RecipeService).GetMethod("GetAll"), cachingInterceptor.Intercept);
         }
     }
 }

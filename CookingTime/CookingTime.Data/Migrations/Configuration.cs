@@ -1,5 +1,4 @@
 using System.Linq;
-using CookingTime.Common;
 using Microsoft.AspNet.Identity.EntityFramework;
 using CookingTime.Models;
 using System;
@@ -18,9 +17,9 @@ namespace CookingTime.Data.Migrations
 
         protected override void Seed(CookingTimeDbContext context)
         {
-            if (!context.Roles.Any(r => r.Name.Equals(Constants.AdministratorRoleName)))
+            if (!context.Roles.Any(r => r.Name.Equals("admin")))
             {
-                context.Roles.Add(new IdentityRole(Constants.AdministratorRoleName));
+                context.Roles.Add(new IdentityRole("admin"));
             }
 
             //List<Ingredient> ingredients = new List<Ingredient>() {

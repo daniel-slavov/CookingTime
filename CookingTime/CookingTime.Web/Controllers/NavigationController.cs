@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
 using CookingTime.Authentication.Contracts;
-using CookingTime.Common;
 using CookingTime.Web.Infrastructure.Factories;
 
 namespace CookingTime.Web.Controllers
@@ -28,7 +27,7 @@ namespace CookingTime.Web.Controllers
                 username = this.authenticationProvider.CurrentUserUsername;
                 var userId = this.authenticationProvider.CurrentUserId;
 
-                isAdmin = this.authenticationProvider.IsInRole(userId, Constants.AdministratorRoleName);
+                isAdmin = this.authenticationProvider.IsInRole(userId, "admin");
             }
 
             var model = this.viewModelFactory.CreateNavigationViewModel(username, isAuthenticated, isAdmin);

@@ -1,5 +1,4 @@
 ﻿using System;
-using CookingTime.Common;
 using CookingTime.Providers.Contracts;
 using Ninject.Extensions.Interception;
 
@@ -42,9 +41,7 @@ namespace CookingTime.Web.Infrastructure.Interception
 
                 result = invocation.ReturnValue;
 
-                var date = this.dateTimeProvider.GetTimeFromCurrentTime(Constants.HoursCaching,
-                    Constants.MinutesCaching,
-                    Constants.SecondsCaching);
+                var date = this.dateTimeProvider.GetTimeFromCurrentTime(0, 5, 0);
 
                 this.cachingProvider.AddItem(key, result, date);
             }
