@@ -6,6 +6,7 @@ using CookingTime.Data.Contracts;
 using CookingTime.Factories;
 using CookingTime.Providers.Contracts;
 using System.Linq;
+using System.Data.Entity;
 
 namespace CookingTime.Services
 {
@@ -46,8 +47,7 @@ namespace CookingTime.Services
         {
             IEnumerable<Recipe> recipes = this.RecipeRepository.All
                 .Where(x => !x.IsDeleted)
-                .OrderByDescending(x => x.CreatedOn)
-                .ToList();
+                .OrderByDescending(x => x.CreatedOn);
 
             return recipes;
         }
@@ -55,8 +55,7 @@ namespace CookingTime.Services
         public IEnumerable<Recipe> GetAllWithDeleted()
         {
             IEnumerable<Recipe> recipes = this.RecipeRepository.All
-                .OrderByDescending(x => x.CreatedOn)
-                .ToList();
+                .OrderBy(x => x.Title);
 
             return recipes;
         }
@@ -87,7 +86,11 @@ namespace CookingTime.Services
 
         public void Delete(Guid id)
         {
-            Recipe recipe = this.RecipeRepository.GetById(id);
+            Recipe recipe = this.RecipeRepository.All
+                .Include(x => x.Owner)
+                .FirstOrDefault(x => x.ID == id);
+
+            recipe.Owner = this.UserService.GetById(recipe.Owner.Id);
             recipe.IsDeleted = true;
 
             this.RecipeRepository.Update(recipe);
@@ -96,7 +99,9 @@ namespace CookingTime.Services
 
         public void Recover(Guid id)
         {
-            Recipe recipe = this.RecipeRepository.GetById(id);
+            Recipe recipe = this.RecipeRepository.All
+                .Include(x => x.Owner)
+                .FirstOrDefault(x => x.ID == id); ;
             recipe.IsDeleted = false;
 
             this.RecipeRepository.Update(recipe);

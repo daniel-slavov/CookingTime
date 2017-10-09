@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<CookingTime.Web.Areas.Administration.Models.UserAdministrationViewModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Users Administration";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().IsAdmin)
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAdmin)
+        </td>
+        <td>
+            @if (item.IsAdmin)
+            {
+                @Html.ActionLink("Remove admin", "RemoveAdmin", new { id = item.Id })
+            }
+            else
+            {
+                @Html.ActionLink("Make admin", "MakeAdmin", new { id = item.Id })
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
+</div>

@@ -11,18 +11,8 @@ namespace CookingTime.Web.Infrastructure.Interception
 
         public CachingInterceptor(ICachingProvider cachingProvider, IDateTimeProvider dateTimeProvider)
         {
-            if (cachingProvider == null)
-            {
-                throw new ArgumentNullException(nameof(cachingProvider));
-            }
-
-            if (dateTimeProvider == null)
-            {
-                throw new ArgumentNullException(nameof(dateTimeProvider));
-            }
-
-            this.cachingProvider = cachingProvider;
-            this.dateTimeProvider = dateTimeProvider;
+            this.cachingProvider = cachingProvider ?? throw new ArgumentNullException(nameof(cachingProvider));
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
         }
 
         public void Intercept(IInvocation invocation)

@@ -41,7 +41,8 @@ namespace CookingTime.Web.Controllers
         public ActionResult All(int? page)
         {
             IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
-                .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
+                .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl))
+                .ToList();
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);

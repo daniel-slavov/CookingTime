@@ -23,9 +23,5 @@ namespace CookingTime.Authentication.Contracts
         IdentityResult AddToRole(string userId, string roleName);
 
         IdentityResult RemoveFromRole(string userId, string roleName);
-
-        void BanUser(string userId);
-
-        void UnbanUser(string userId);
     }
 }

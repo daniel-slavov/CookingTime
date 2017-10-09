@@ -40,6 +40,8 @@ namespace CookingTime.Models
 
         //public ICollection<Ingredient> Ingredients { get; set; }
 
+        //public string UserId { get; set; }
+
         [Required]
         public User Owner { get; set; }
     }

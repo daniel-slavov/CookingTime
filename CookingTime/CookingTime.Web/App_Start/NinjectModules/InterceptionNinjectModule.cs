@@ -20,6 +20,7 @@ namespace CookingTime.Web.App_Start.NinjectModules
             var cachingInterceptor = this.Kernel.Get<CachingInterceptor>();
 
             Kernel.AddMethodInterceptor(typeof(RecipeService).GetMethod("GetAll"), cachingInterceptor.Intercept);
+            Kernel.AddMethodInterceptor(typeof(RecipeService).GetMethod("GetAllWithDeleted"), cachingInterceptor.Intercept);
         }
     }
 }
