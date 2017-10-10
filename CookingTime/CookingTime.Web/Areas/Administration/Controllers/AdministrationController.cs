@@ -57,6 +57,7 @@ namespace CookingTime.Web.Areas.Administration.Controllers
             return this.RedirectToAction("AllRecipes");
         }
 
+        [HttpPost]
         public ActionResult Recover(Guid id)
         {
             this.RecipeService.Recover(id);
