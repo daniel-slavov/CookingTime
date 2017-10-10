@@ -56,7 +56,38 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CookingTime.Authentication\CookingTime.Authentication.csproj">
+      <Project>{911fb23d-c230-4581-94ff-212e574bff36}</Project>
+      <Name>CookingTime.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Data\CookingTime.Data.csproj">
+      <Project>{cec6230f-980f-427c-ae27-4436648e60a2}</Project>
+      <Name>CookingTime.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Factories\CookingTime.Factories.csproj">
+      <Project>{9cde063e-931b-4e7a-a7a9-2452b9c92a4e}</Project>
+      <Name>CookingTime.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Models\CookingTime.Models.csproj">
+      <Project>{42c607c4-8fb1-490c-aad4-5ac9921f91fc}</Project>
+      <Name>CookingTime.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Providers\CookingTime.Providers.csproj">
+      <Project>{fb8cf5fd-a33c-44d0-8517-a2d55cc7b470}</Project>
+      <Name>CookingTime.Providers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Services\CookingTime.Services.csproj">
+      <Project>{4bd34cdb-e6ce-415c-95ef-5e04cc0a2fa0}</Project>
+      <Name>CookingTime.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CookingTime.Web\CookingTime.Web.csproj">
+      <Project>{6a9f8991-43bb-4bfa-812e-03691632351b}</Project>
+      <Name>CookingTime.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
