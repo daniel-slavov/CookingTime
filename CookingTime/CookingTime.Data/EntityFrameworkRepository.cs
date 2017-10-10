@@ -22,6 +22,11 @@ namespace CookingTime.Data
             }
         }
 
+        public T GetById(object id)
+        {
+            return this.dbContext.DbSet<T>().Find(id);
+        }
+
         public void Add(T entity)
         {
             this.dbContext.SetAdded(entity);
@@ -30,11 +35,6 @@ namespace CookingTime.Data
         public void Delete(T entity)
         {
             this.dbContext.SetDeleted(entity);
-        }
-
-        public T GetById(object id)
-        {
-            return this.dbContext.DbSet<T>().Find(id);
         }
 
         public void Update(T entity)

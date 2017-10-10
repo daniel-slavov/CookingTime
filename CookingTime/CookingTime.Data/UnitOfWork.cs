@@ -17,10 +17,5 @@ namespace CookingTime.Data
         {
             this.dbContext.SaveChanges();
         }
-
-        public async Task CommitAsync()
-        {
-            await this.dbContext.SaveChangesAsync();
-        }
     }
 }
