@@ -25,16 +25,17 @@
         <td>
             @if (item.IsDeleted)
             {
-                //@Html.ActionLink("Recover", "Recover", new { id = item.ID })
-                using (Html.BeginForm("Recover", "Administration", new { area="Administration" }, FormMethod.Post))
+                using (Html.BeginForm("Recover", "Administration", new { id=item.ID, area="Administration" }, FormMethod.Post))
                 {
-                    @Html.HiddenFor(id => item.ID)
                     <input type="submit" value="Recover"/>
                 }
             }
             else
             {
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                using (Html.BeginForm("Delete", "Administration", new { id = item.ID, area = "Administration" }, FormMethod.Post))
+                {
+                    <input type="submit" value="Delete" />
+                }
             }
         </td>
     </tr>

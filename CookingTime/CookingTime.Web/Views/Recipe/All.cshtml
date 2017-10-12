@@ -4,24 +4,23 @@
 @{
     ViewBag.Title = "Recipes";
 }
-
-@foreach (var item in Model)
-{
-    <div class="row bg-success text-white">
-        <div class="col-md-7">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="@item.ImageUrl" alt="">
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            @*<div class="thumbnail">*@
+                <img src="@item.ImageUrl">
+                <h3>@item.Title</h3>
+                @Html.ActionLink("Details", "Details", "Recipe", new { id = item.ID }, new { @class = "btn btn-primary" })
+            @*</div>*@
         </div>
-        <div class="col-md-5">
-            <h3>@item.Title</h3>
-            @Html.ActionLink("Details", "Details", "Recipe", new { id = item.ID }, new { @class = "btn btn-primary" })
-        </div>
-    </div>
+    }
+</div>
 
-    <hr>
-}
 
 <br />
 
-<div>
+<div id="pages">
     @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
 </div>

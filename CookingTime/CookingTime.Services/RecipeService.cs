@@ -101,7 +101,9 @@ namespace CookingTime.Services
         {
             Recipe recipe = this.RecipeRepository.All
                 .Include(x => x.Owner)
-                .FirstOrDefault(x => x.ID == id); ;
+                .FirstOrDefault(x => x.ID == id);
+
+            recipe.Owner = this.UserService.GetById(recipe.Owner.Id);
             recipe.IsDeleted = false;
 
             this.RecipeRepository.Update(recipe);

@@ -10,12 +10,7 @@ namespace CookingTime.Providers
 
         public CachingProvider(IHttpContextProvider httpContextProvider)
         {
-            if (httpContextProvider == null)
-            {
-                throw new ArgumentNullException(nameof(httpContextProvider));
-            }
-
-            this.httpContextProvider = httpContextProvider;
+            this.httpContextProvider = httpContextProvider ?? throw new ArgumentNullException(nameof(httpContextProvider));
         }
 
         public void AddItem(string key, object value, DateTime expirationDateTime)

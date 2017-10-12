@@ -1,5 +1,6 @@
 ﻿using CookingTime.Authentication.Contracts;
 using CookingTime.Models;
+using CookingTime.Providers.Contracts;
 using CookingTime.Services.Contracts;
 using CookingTime.Web.Areas.Administration.Models;
 using CookingTime.Web.Infrastructure.Factories;
@@ -50,6 +51,7 @@ namespace CookingTime.Web.Areas.Administration.Controllers
             return this.View(recipes.ToPagedList(pageNumber, pageSize));
         }
 
+        [HttpPost]
         public ActionResult Delete(Guid id)
         {
             this.RecipeService.Delete(id);
@@ -77,6 +79,7 @@ namespace CookingTime.Web.Areas.Administration.Controllers
             return this.View(users.ToPagedList(pageNumber, pageSize));
         }
 
+        [HttpPost]
         public ActionResult MakeAdmin(string id)
         {
             this.AuthenticationProvider.AddToRole(id, "admin");
@@ -84,6 +87,7 @@ namespace CookingTime.Web.Areas.Administration.Controllers
             return this.RedirectToAction("AllUsers");
         }
 
+        [HttpPost]
         public ActionResult RemoveAdmin(string id)
         {
             this.AuthenticationProvider.RemoveFromRole(id, "admin");

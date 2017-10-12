@@ -38,11 +38,11 @@ namespace CookingTime.Web.Controllers
         }
 
         // GET: /Recipes/All
+        //[OutputCache(Duration = 300)]
         public ActionResult All(int? page)
         {
             IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
-                .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl))
-                .ToList();
+                .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
