@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CookingTime.Web.Areas.Administration.Models.RecipeAdministrationViewModel>
 
-
-<table class="table">
+<br />
+<table class="table panel">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -14,31 +14,32 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @if (item.IsDeleted)
-            {
-                using (Html.BeginForm("Recover", "Administration", new { id=item.ID, area="Administration" }, FormMethod.Post))
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @if (item.IsDeleted)
                 {
-                    <input type="submit" value="Recover"/>
+                    using (Html.BeginForm("Recover", "Administration", new { id = item.ID, area = "Administration" }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Recover" class="btn btn-primary" />
+                    }
                 }
-            }
-            else
-            {
-                using (Html.BeginForm("Delete", "Administration", new { id = item.ID, area = "Administration" }, FormMethod.Post))
+                else
                 {
-                    <input type="submit" value="Delete" />
+                    using (Html.BeginForm("Delete", "Administration", new { id = item.ID, area = "Administration" }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    }
                 }
-            }
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>

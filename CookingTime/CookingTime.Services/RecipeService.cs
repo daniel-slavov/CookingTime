@@ -38,7 +38,9 @@ namespace CookingTime.Services
 
         public Recipe GetById(Guid id)
         {
-            Recipe recipe = this.RecipeRepository.GetById(id);
+            Recipe recipe = this.RecipeRepository.All
+                .Include(x => x.Owner)
+                .FirstOrDefault(x => x.ID == id);
 
             return recipe;
         }
@@ -47,6 +49,7 @@ namespace CookingTime.Services
         {
             IEnumerable<Recipe> recipes = this.RecipeRepository.All
                 .Where(x => !x.IsDeleted)
+                .Include(x => x.Owner)
                 .OrderByDescending(x => x.CreatedOn);
 
             return recipes;
@@ -79,6 +82,7 @@ namespace CookingTime.Services
             Recipe recipe = this.RecipeRepository.GetById(id);
             recipe.Title = title;
             recipe.Description = description;
+            recipe.ImageUrl = imageUrl;
 
             this.RecipeRepository.Update(recipe);
             this.UnitOfWork.Commit();

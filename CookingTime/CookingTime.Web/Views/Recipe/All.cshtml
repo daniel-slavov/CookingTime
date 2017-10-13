@@ -4,23 +4,41 @@
 @{
     ViewBag.Title = "Recipes";
 }
+
 <br />
-<div class="row">
-    @foreach (var item in Model)
+<div class="panel">
+    @using (Ajax.BeginForm("Search",
+        new AjaxOptions()
+        {
+            //HttpMethod = "Post",
+            UpdateTargetId = "RecipePanel",
+            InsertionMode = InsertionMode.Replace,
+        }))
     {
-        <div class="col-md-4">
-            @*<div class="thumbnail">*@
-                <img src="@item.ImageUrl">
-                <h3>@item.Title</h3>
-                @Html.ActionLink("Details", "Details", "Recipe", new { id = item.ID }, new { @class = "btn btn-primary" })
-            @*</div>*@
-        </div>
+        <input type="text" name="pattern" />
+        <input type="submit" />
     }
 </div>
 
+<div id="RecipePanel" class="panel">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                @*<div class="thumbnail">*@
+                <img src="@item.ImageUrl">
+                <h3>@item.Title</h3>
+                @Html.ActionLink("Details", "Details", "Recipe", new { id = item.ID }, new { @class = "btn btn-primary" })
+                @*</div>*@
+            </div>
+        }
+    </div>
 
-<br />
+    <br />
 
-<div id="pages">
-    @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
+    <div id="pages">
+        @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
+    </div>
 </div>
+
+}

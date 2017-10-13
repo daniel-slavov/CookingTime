@@ -32,7 +32,7 @@ namespace CookingTime.Models
         [Required]
         public string Description { get; set; }
 
-        public string ImageUrl { get; private set; }
+        public string ImageUrl { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

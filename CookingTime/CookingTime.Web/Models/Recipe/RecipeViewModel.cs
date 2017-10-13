@@ -9,10 +9,9 @@ namespace CookingTime.Web.Models.Recipe
     {
         public RecipeViewModel()
         {
-            //this.Ingredients = new HashSet<string>();
         }
 
-        public RecipeViewModel(Guid id, string title, string description, string imageUrl) : this()
+        public RecipeViewModel(Guid id, string title, string description, string imageUrl)
         {
             this.ID = id;
             this.Title = title;
@@ -34,7 +33,6 @@ namespace CookingTime.Web.Models.Recipe
         [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
 
-        //[Display(Name = "Ingredients")]
-        //public ICollection<string> Ingredients { get; set; }
+        public bool CanEdit { get; set; }
     }
 }

@@ -5,7 +5,8 @@
     ViewBag.Title = "Users Administration";
 }
 
-<table class="table">
+<br />
+<table class="table panel">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First().Username)
@@ -32,14 +33,14 @@
             {
                 using (Html.BeginForm("RemoveAdmin", "Administration", new { id = item.Id, area = "Administration" }, FormMethod.Post))
                 {
-                    <input type="submit" value="Remove admin" />
+                    <input type="submit" value="Remove admin"  class="btn btn-warning" />
                 }
             }
             else
             {
                 using (Html.BeginForm("MakeAdmin", "Administration", new { id = item.Id, area = "Administration" }, FormMethod.Post))
                 {
-                    <input type="submit" value="Make admin" />
+                    <input type="submit" value="Make admin"  class="btn btn-primary" />
                 }
             }
         </td>

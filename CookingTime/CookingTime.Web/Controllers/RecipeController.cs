@@ -38,10 +38,12 @@ namespace CookingTime.Web.Controllers
         }
 
         // GET: /Recipes/All
-        //[OutputCache(Duration = 300)]
         public ActionResult All(int? page)
         {
+            //pattern = (pattern == null) ? "":  pattern.ToLower();
+
             IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
+                //.Where(x => x.Title.ToLower().Contains(pattern))
                 .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
 
             int pageSize = 3;
@@ -49,12 +51,41 @@ namespace CookingTime.Web.Controllers
             return this.View(recipes.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult Search(int? page, string pattern)
+        {
+            pattern = (pattern == null) ? "" : pattern.ToLower();
+
+            IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
+                .Where(x => x.Title.ToLower().Contains(pattern))
+                .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
+
+            //int pageSize = 3;
+            //int pageNumber = (page ?? 1);
+            return this.PartialView("_RecipesPartial", recipes.ToList());
+        }
+        
+        //public ActionResult Search(int? page, string pattern)
+        //{
+        //    if (this.Request.IsAjaxRequest())
+        //    {
+        //        return this.AllRecipes(page, pattern);
+        //    }
+        //    else
+        //    {
+        //        return this.RedirectToAction("All", new { page, pattern });
+        //    }
+        //}
+
         // GET: /Recipes/GetByID/
         public ActionResult Details(Guid id)
         {
             Recipe recipe = this.RecipeService.GetById(id);
 
             RecipeViewModel model = this.ViewModelFactory.CreateRecipeViewModel(recipe.ID, recipe.Title, recipe.Description, recipe.ImageUrl);
+
+            string userId = this.AuthenticationProvider.CurrentUserId;
+
+            model.CanEdit = (recipe.Owner.Id == userId);
 
             return this.View(model);
         }
