@@ -156,7 +156,6 @@
     <Compile Include="Services\UserServiceTests\GetAllShould.cs" />
     <Compile Include="Services\UserServiceTests\GetByIdShould.cs" />
     <Compile Include="Services\UserServiceTests\GetByUsernameShould.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
