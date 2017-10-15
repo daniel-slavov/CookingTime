@@ -105,11 +105,12 @@ namespace CookingTime.Tests.Controllers.NavigationControllerTests
         }
 
         [Test]
-        public void CallAuthProviderIsInRoleCorrectly_WhenAuthProviderIsAuthenticatedReturnsTrue(string userId)
+        public void CallAuthProviderIsInRoleCorrectly_WhenAuthProviderIsAuthenticatedReturnsTrue()
         {
             // Arrange
+            var userId = Guid.NewGuid().ToString();
             var mockedAuthProvider = new Mock<IAuthenticationProvider>();
-            mockedAuthProvider.Setup(p => p.CurrentUserId).Returns(Guid.NewGuid().ToString());
+            mockedAuthProvider.Setup(p => p.CurrentUserId).Returns(userId);
             mockedAuthProvider.Setup(p => p.IsAuthenticated).Returns(true);
 
             var mockedViewModelFactory = new Mock<IViewModelFactory>();

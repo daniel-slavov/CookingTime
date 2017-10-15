@@ -8,7 +8,6 @@ using CookingTime.Web.Models.Recipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using PagedList;
 
@@ -38,12 +37,10 @@ namespace CookingTime.Web.Controllers
         }
 
         // GET: /Recipes/All
+        [OutputCache(Duration = 60, VaryByParam = "page")]
         public ActionResult All(int? page)
         {
-            //pattern = (pattern == null) ? "":  pattern.ToLower();
-
             IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
-                //.Where(x => x.Title.ToLower().Contains(pattern))
                 .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
 
             int pageSize = 3;
@@ -51,30 +48,16 @@ namespace CookingTime.Web.Controllers
             return this.View(recipes.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Search(int? page, string pattern)
+        public ActionResult Search(string pattern)
         {
             pattern = (pattern == null) ? "" : pattern.ToLower();
 
             IEnumerable<RecipeViewModel> recipes = this.RecipeService.GetAll()
                 .Where(x => x.Title.ToLower().Contains(pattern))
                 .Select(x => this.ViewModelFactory.CreateRecipeViewModel(x.ID, x.Title, x.Description, x.ImageUrl));
-
-            //int pageSize = 3;
-            //int pageNumber = (page ?? 1);
+            
             return this.PartialView("_RecipesPartial", recipes.ToList());
         }
-        
-        //public ActionResult Search(int? page, string pattern)
-        //{
-        //    if (this.Request.IsAjaxRequest())
-        //    {
-        //        return this.AllRecipes(page, pattern);
-        //    }
-        //    else
-        //    {
-        //        return this.RedirectToAction("All", new { page, pattern });
-        //    }
-        //}
 
         // GET: /Recipes/GetByID/
         public ActionResult Details(Guid id)
@@ -112,8 +95,7 @@ namespace CookingTime.Web.Controllers
             }
             else
             {
-                // should be fixed
-                return this.RedirectToAction("All");
+                return this.View("Error");
             }
 
         }
@@ -139,8 +121,7 @@ namespace CookingTime.Web.Controllers
             }
             else
             {
-                // To be fixed!
-                return this.RedirectToAction("Update", new { id = model.ID });
+                return this.View("Error");
             }
         }
     }
