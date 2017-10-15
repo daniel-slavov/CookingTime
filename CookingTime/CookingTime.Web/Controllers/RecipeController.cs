@@ -86,7 +86,7 @@ namespace CookingTime.Web.Controllers
         [Authorize]
         public ActionResult Create(RecipeViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 string userId = this.AuthenticationProvider.CurrentUserId;
                 Guid id = this.RecipeService.Create(model.Title, model.Description, model.ImageUrl, userId);
@@ -113,7 +113,7 @@ namespace CookingTime.Web.Controllers
         [HttpPost]
         public ActionResult Edit(RecipeViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 this.RecipeService.Update(model.ID, model.Title, model.Description, model.ImageUrl);
 
