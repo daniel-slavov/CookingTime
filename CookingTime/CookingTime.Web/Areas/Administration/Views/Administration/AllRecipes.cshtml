@@ -1,13 +1,14 @@
-﻿@model IEnumerable<CookingTime.Web.Areas.Administration.Models.RecipeAdministrationViewModel>
+﻿@model PagedList.IPagedList<CookingTime.Web.Areas.Administration.Models.RecipeAdministrationViewModel>
+@using PagedList.Mvc;
 
 <br />
 <table class="table panel">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.First().Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
+            @Html.DisplayNameFor(model => model.First().IsDeleted)
         </th>
         <th>
             Actions
@@ -43,3 +44,7 @@
     }
 
 </table>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
+</div>

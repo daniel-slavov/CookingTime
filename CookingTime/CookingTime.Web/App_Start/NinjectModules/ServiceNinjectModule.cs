@@ -11,7 +11,6 @@ namespace CookingTime.Web.App_Start.NinjectModules
         {
             this.Bind<IUserService>().To<UserService>().InRequestScope();
             this.Bind<IRecipeService>().To<RecipeService>().InSingletonScope();
-            this.Bind<IIngredientService>().To<IngredientService>().InSingletonScope();
         }
     }
 }

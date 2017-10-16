@@ -167,7 +167,6 @@
     <Compile Include="Data\Repository\UpdateShould.cs" />
     <Compile Include="Data\UnitOfWorkTests\CommitShould.cs" />
     <Compile Include="Data\UnitOfWorkTests\ConstructorShould.cs" />
-    <Compile Include="Providers\CachingProviderTests.cs" />
     <Compile Include="Services\RecipeServiceTests\ConstructorShould.cs" />
     <Compile Include="Services\RecipeServiceTests\CreateShould.cs" />
     <Compile Include="Services\RecipeServiceTests\DeleteShould.cs" />
@@ -215,9 +214,6 @@
       <Project>{6a9f8991-43bb-4bfa-812e-03691632351b}</Project>
       <Name>CookingTime.Web</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

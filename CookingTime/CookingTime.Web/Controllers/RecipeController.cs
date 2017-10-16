@@ -84,9 +84,10 @@ namespace CookingTime.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(RecipeViewModel model)
         {
-            if (this.ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 string userId = this.AuthenticationProvider.CurrentUserId;
                 Guid id = this.RecipeService.Create(model.Title, model.Description, model.ImageUrl, userId);
@@ -95,7 +96,7 @@ namespace CookingTime.Web.Controllers
             }
             else
             {
-                return this.View("Error");
+                return this.RedirectToAction("Index", "Home");
             }
 
         }
@@ -111,6 +112,7 @@ namespace CookingTime.Web.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(RecipeViewModel model)
         {
             if (this.ModelState.IsValid)
@@ -121,7 +123,7 @@ namespace CookingTime.Web.Controllers
             }
             else
             {
-                return this.View("Error");
+                return this.RedirectToAction("Index", "Home");
             }
         }
     }

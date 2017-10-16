@@ -29,6 +29,7 @@ namespace CookingTime.Web.Models.Recipe
         [Display(Name = "Description")]
         public string Description { get; set; }
 
+        [Url(ErrorMessage = "Invalid image link.")]
         [Required]
         [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }

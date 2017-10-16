@@ -31,7 +31,7 @@ namespace CookingTime.Tests.Services.RecipeServiceTests
             var service = new RecipeService(mockedRepository.Object, mockedUnitOfWork.Object, mockedFactory.Object, mockedDateTimeProvider.Object, mockedGuidProvider.Object, mockedUserService.Object);
 
             // Act
-            service.GetAll();
+            service.GetAllWithDeleted();
 
             // Assert
             mockedRepository.Verify(r => r.All, Times.Once);
@@ -56,7 +56,7 @@ namespace CookingTime.Tests.Services.RecipeServiceTests
             var service = new RecipeService(mockedRepository.Object, mockedUnitOfWork.Object, mockedFactory.Object, mockedDateTimeProvider.Object, mockedGuidProvider.Object, mockedUserService.Object);
 
             // Act
-            var result = service.GetAll();
+            var result = service.GetAllWithDeleted();
 
             // Assert
             Assert.AreEqual(recipes, result);

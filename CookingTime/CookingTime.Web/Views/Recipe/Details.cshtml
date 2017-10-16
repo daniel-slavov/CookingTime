@@ -1,17 +1,13 @@
 ﻿@model CookingTime.Web.Models.Recipe.RecipeViewModel
 
-<div>
-    <h4>RecipeViewModel</h4>
+<div class="panel col-md-8">
+    <h2>
+        @Model.Title
+    </h2>
+    
     <hr />
+    <img src="@Model.ImageUrl" />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -19,12 +15,11 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
     </dl>
+    <div class="container">
+        @if (Model.CanEdit)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+        }
+    </div>
 </div>
-<p>
-    @if (Model.CanEdit)
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
-    }
-</p>

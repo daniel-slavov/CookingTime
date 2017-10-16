@@ -59,5 +59,24 @@ namespace CookingTime.Tests.Controllers.RecipeControllerTests
                 .WithCallTo(c => c.Edit(viewModel))
                 .ShouldRedirectTo(x => x.Details(guid));
         }
+
+        [Test]
+        public void ShouldRedirectToHome_WhenModelIsNotValid()
+        {
+            // Arrange
+            var mockedProvider = new Mock<IAuthenticationProvider>();
+            var mockedGuidProvider = new Mock<IGuidProvider>();
+            var mockedRecipeService = new Mock<IRecipeService>();
+            var mockedRecipeFactory = new Mock<IRecipeFactory>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
+
+            var controller = new RecipeController(mockedRecipeService.Object, mockedRecipeFactory.Object, mockedViewModelFactory.Object, mockedProvider.Object, mockedGuidProvider.Object);
+            controller.ModelState.AddModelError("key", "error");
+
+            // Act, Assert
+            controller
+                .WithCallTo(c => c.Edit(null))
+                .ShouldRedirectTo<HomeController>(x => x.Index());
+        }
     }
 }

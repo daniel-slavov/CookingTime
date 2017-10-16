@@ -8,10 +8,6 @@ using CookingTime.Web.Models.Recipe;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestStack.FluentMVCTesting;
 
 namespace CookingTime.Tests.Controllers.RecipeControllerTests
@@ -82,6 +78,25 @@ namespace CookingTime.Tests.Controllers.RecipeControllerTests
             controller
                 .WithCallTo(c => c.Create(viewModel))
                 .ShouldRedirectTo(x => x.Details(guid));
+        }
+
+        [Test]
+        public void ShouldRedirectToHome_WhenModelIsNotValid()
+        {
+            // Arrange
+            var mockedProvider = new Mock<IAuthenticationProvider>();
+            var mockedGuidProvider = new Mock<IGuidProvider>();
+            var mockedRecipeService = new Mock<IRecipeService>();
+            var mockedRecipeFactory = new Mock<IRecipeFactory>();
+            var mockedViewModelFactory = new Mock<IViewModelFactory>();
+
+            var controller = new RecipeController(mockedRecipeService.Object, mockedRecipeFactory.Object, mockedViewModelFactory.Object, mockedProvider.Object, mockedGuidProvider.Object);
+            controller.ModelState.AddModelError("key", "error");
+
+            // Act, Assert
+            controller
+                .WithCallTo(c => c.Create(null))
+                .ShouldRedirectTo<HomeController>(x => x.Index());
         }
     }
 }

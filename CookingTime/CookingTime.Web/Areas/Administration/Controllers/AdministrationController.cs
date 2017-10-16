@@ -1,6 +1,4 @@
 ﻿using CookingTime.Authentication.Contracts;
-using CookingTime.Models;
-using CookingTime.Providers.Contracts;
 using CookingTime.Services.Contracts;
 using CookingTime.Web.Areas.Administration.Models;
 using CookingTime.Web.Infrastructure.Factories;
@@ -8,7 +6,6 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CookingTime.Web.Areas.Administration.Controllers

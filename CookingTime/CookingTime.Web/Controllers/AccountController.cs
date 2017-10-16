@@ -57,7 +57,7 @@ namespace CookingTime.Web.Controllers
                     return this.Redirect(returnUrl);
                 case SignInStatus.LockedOut:
                     return this.View("Lockout");
-                case SignInStatus.Failure:
+                //case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return this.View(model);
